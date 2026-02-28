@@ -1,6 +1,6 @@
-# Protocol-Level Audit Runner (JCSSE 2026)
+# Protocol-Level Audit Runner
 
-This repository provides a **single, locked experiment runner** that reproduces the **protocol-level auditing study** described in our JCSSE submission:
+This repository provides a **single, locked experiment runner** that reproduces the **protocol-level auditing study**:
 
 > **Protocol-Level Auditing of Machine Learning Evaluation: Disentangling Split Policy, Leakage, and Decision Stability**
 
@@ -52,7 +52,7 @@ We therefore audit evaluation protocols at the **protocol level**, explicitly se
 
 ## What This Runner Audits
 
-The script `jcsse_audit_runner_tqdm_hardened.py` implements a protocol-level audit of ML evaluation across:
+The script `jcsse_audit_runner.py` implements a protocol-level audit of ML evaluation across:
 
 - **Split policy**: `S1` (StratifiedKFold) vs `S2` (GroupKFold)
 - **Leakage protocol**: `P0–P3` (strictly controlled → progressively violated)
@@ -307,13 +307,13 @@ Key files:
 
 ```bash
 1. pip install numpy pandas scikit-learn xgboost tqdm
-2. python jcsse_audit_runner_tqdm_hardened.py
+2. python jcsse_audit_runner.py
 ```
 ---
 
 ## Design Notes / Guarantees
 
-This repository is designed as an **executable specification** of the protocol-level audit described in the accompanying JCSSE submission. The runner enforces the following guarantees:
+This repository is designed as an **executable specification** of the protocol-level audit. The runner enforces the following guarantees:
 
 ### 1) Locked Protocol (Paper-Matched)
 - **Seeds, hyperparameter grids, phase ordering, and configuration space are fixed** to match the paper.
